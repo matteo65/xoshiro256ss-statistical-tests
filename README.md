@@ -1,6 +1,12 @@
 # xoshiro256** statistical tests
 Comprehensive benchmark of xoshiro256** 
 
+## TestU01
+Version: 1.2.3
+Compiler: 
+Host: 
+
+
 ## TestU01 crush
 Low32 with anomalies: 30  
 Low32 without anomalies: 70  
@@ -223,7 +229,8 @@ Total high32 anomalies: 41
 |76 LongestHeadRun, r = 0|1|0|0|
 |93 AutoCor, d = 1|0|1|0|
 
-### P-value distribuition
+### p-value distribuition
+
 |Side|high32 | mid32 | low32 |
 |----|-------|-------|-------|
 |Top|13|9|19|

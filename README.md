@@ -223,7 +223,7 @@ Total high32 anomalies: 41
 |76 LongestHeadRun, r = 0|1|0|0|
 |93 AutoCor, d = 1|0|1|0|
 
-P-value distribuition
+### P-value distribuition
 |Side|high32 | mid32 | low32 |
 |----|-------|-------|-------|
 |Top|13|9|19|

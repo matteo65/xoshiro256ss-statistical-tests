@@ -1,4 +1,4 @@
-# xoshiro256** tatistical tests
+# xoshiro256** statistical tests
 Comprehensive benchmark of xoshiro256** 
 
 # TestU01

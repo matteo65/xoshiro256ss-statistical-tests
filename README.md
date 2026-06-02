@@ -1,25 +1,22 @@
-# xoshiro256** statistical tests
+# xoshiro256** tatistical tests
 Comprehensive benchmark of xoshiro256** 
 
-## TestU01
-Version: 1.2.3
-Compiler: 
-Host: 
+# TestU01
 
+# TestU01 crush
+Number of tests: 100
+Number of crush runs: 300
+Nomber of TestU01 statistics: 43200
+Total number of expected anomalies: 86.4 (3 x 28.8)
 
-## TestU01 crush
-Low32 with anomalies: 30  
-Low32 without anomalies: 70  
-Mid32 with anomalies: 26  
-Mid32 without anomalies: 74  
-High32 with anomalies: 35  
-High32 without anomalies: 65  
+Runs Low32 with anomalies: 30
+Runs Low32 without anomalies: 70
+Runs Mid32 with anomalies: 26
+Runs Mid32 without anomalies: 74
+Runs High32 with anomalies: 35
+Runs High32 without anomalies: 65
 
-Total low32 anomalies: 34  
-Total mid32 anomalies: 28  
-Total high32 anomalies: 41  
-
-
+### Details of anomalies for each test performed
 | Test | high32 | mid32 | low32 |
 |------|--------|--------|--------|
 |00|-|10 CollisionOver, t = 20 (4.3e-4)|-|
@@ -28,7 +25,7 @@ Total high32 anomalies: 41
 |03|21 ClosePairsBitMatch, t = 2 (4.4e-4)|-|-|
 |04|-|-|-|
 |05|-|-|-|
-|06|-|68 RandomWalk1 C (L = 1000) (3.9e-4)<br>69 RandomWalk1 C (L = 10000) (3.9e-4)<br>91 Run of bits, r = 0 (0.9996)|9 CollisionOver, t = 20 (8.0e-4)|
+|06|-|68 RandomWalk1 C (L = 1000) (3.9e-4);<br>69 RandomWalk1 C (L = 10000) (3.9e-4);<br>91 Run of bits, r = 0 (0.9996)|9 CollisionOver, t = 20 (8.0e-4)|
 |07|-|-|-|
 |08|-|14 BirthdaySpacings, t = 7 (8.0e-4)|-|
 |09|1 SerialOver, t = 2 (4.6e-4)|54 WeightDistrib, r = 24 (5.8e-5)|19 ClosePairs mNP1, t = 3 (0.9994)|
@@ -39,7 +36,7 @@ Total high32 anomalies: 41
 |14|-|-|-|
 |15|-|-|-|
 |16|-|-|-|
-|17|-|-|37 Permutation, r = 0 (0.9998)<br>70 RandomWalk1 M (L = 10000) (0.9997)|
+|17|-|-|37 Permutation, r = 0 (0.9998);<br>70 RandomWalk1 M (L = 10000) (0.9997)|
 |18|33 Gap, r = 0 (8.1e-4)|65 RandomWalk1 J (L = 90) (3.2e-4)|-|
 |19|-|19 ClosePairs mNP2, t = 3 (4.8e-5)|-|
 |20|-|-|91 Run of bits, r = 0 (6.7e-5)|
@@ -47,7 +44,7 @@ Total high32 anomalies: 41
 |22|-|-|-|
 |23|-|-|-|
 |24|-|54 WeightDistrib, r = 24 (0.9997)|-|
-|25|51 WeightDistrib, r = 0 (0.9990)<br>72 LinearComp, r = 29 (0.9993)|-|31 Gap, r = 0 (1.0e-3)|
+|25|51 WeightDistrib, r = 0 (0.9990);<br>72 LinearComp, r = 29 (0.9993)|-|31 Gap, r = 0 (1.0e-3)|
 |26|-|-|-|
 |27|85 HammingIndep, L = 30 (1 - 3.1e-5)|-|9 CollisionOver, t = 20 (1.0e-5)|
 |28|-|-|-|
@@ -62,11 +59,11 @@ Total high32 anomalies: 41
 |37|-|-|-|
 |38|-|-|-|
 |39|-|-|-|
-|40|-|48 SampleCorr (5.0e-4)|19 ClosePairs mNP, t = 3 (8.4e-4)<br>63 GCD, r = 0 (0.9997)|
+|40|-|48 SampleCorr (5.0e-4)|19 ClosePairs mNP, t = 3 (8.4e-4);<br>63 GCD, r = 0 (0.9997)|
 |41|7 CollisionOver, t = 8 (8.0e-4)|90 HammingIndep, L = 1200 (7.4e-4)|-|
-|42|9 CollisionOver, t = 20 (8.0e-4)<br>68 RandomWalk1 M (L = 1000) (0.9992)|-|-|
-|43|36 Run of U01, r = 15 (8.6e-4)<br>77 LongestHeadRun, r = 20 (1.7e-4)|-|54 WeightDistrib, r = 24 (0.9995)<br>69 RandomWalk1 R (L = 10000) (0.9997)|
-|44|-|-|2 SerialOver, t = 4 (8.6e-4)<br>54 WeightDistrib, r = 24 (0.9996)|
+|42|9 CollisionOver, t = 20 (8.0e-4);<br>68 RandomWalk1 M (L = 1000) (0.9992)|-|-|
+|43|36 Run of U01, r = 15 (8.6e-4);<br>77 LongestHeadRun, r = 20 (1.7e-4)|-|54 WeightDistrib, r = 24 (0.9995);<br>69 RandomWalk1 R (L = 10000) (0.9997)|
+|44|-|-|2 SerialOver, t = 4 (8.6e-4);<br>54 WeightDistrib, r = 24 (0.9996)|
 |45|-|-|-|
 |46|10 CollisionOver, t = 20 (3.7e-6)|-|-|
 |47|-|-|9 CollisionOver, t = 20 (1 - 4.3e-5)|
@@ -88,13 +85,13 @@ Total high32 anomalies: 41
 |63|-|-|-|
 |64|-|13 BirthdaySpacings, t = 4 (1.4e-4)|69 RandomWalk1 J (L = 10000) (0.9991)|
 |65|25 SimpPoker, d = 64 (7.3e-4)|-|-|
-|66|2 SerialOver, t = 4 (8.7e-4)<br>52 WeightDistrib, r = 8 (2.7e-4)<br>67 RandomWalk1 M (L = 1000) (0.9997)|-|-|
+|66|2 SerialOver, t = 4 (8.7e-4);<br>52 WeightDistrib, r = 8 (2.7e-4);<br>67 RandomWalk1 M (L = 1000) (0.9997)|-|-|
 |67|-|1 SerialOver, t = 2 (0.9998)|-|
 |68|9 CollisionOver, t = 20 (8.0e-4)|6 CollisionOver, t = 4 (0.9999)|69 RandomWalk1 C (L = 10000) (1 - 9.2e-5)|
 |69|-|-|4 CollisionOver, t = 2 (0.9996)|
 |70|65 RandomWalk1 R (L = 90) (4.9e-4)|47 SampleMean (6.8e-4)|-|
 |71|-|-|-|
-|72|45 SampleProd, t = 10 (1.6e-5)<br>91 Run of bits, r = 0 (0.9992)|-|-|
+|72|45 SampleProd, t = 10 (1.6e-5);<br>91 Run of bits, r = 0 (0.9992)|-|-|
 |73|-|-|-|
 |74|25 SimpPoker, d = 64 (2.2e-4)|-|-|
 |75|-|-|-|
@@ -123,6 +120,7 @@ Total high32 anomalies: 41
 |98|-|-|5 CollisionOver, t = 4 (0.9994)|
 |99|76 LongestHeadRun, r = 0 (0.9999)|93 AutoCor, d = 1 (3.7e-4)|-|
 
+### Ranking by frequency of anomalies
 |Anomaly | high32 | mid32 | low32 |
 |----|-------|-------|-------|
 |9 CollisionOver, t = 20|2|2|3|
@@ -157,86 +155,51 @@ Total high32 anomalies: 41
 |14 BirthdaySpacings, t = 7|0|1|0|
 |46 SampleProd, t = 30|1|0|0|
 |3 CollisionOver, t = 2|0|0|1|
-|19 ClosePairs mNP2, t = 3|0|1|0|
-|91 Run of bits, r = 0|0|0|1|
 |59 MatrixRank, 300 x 300|1|0|0|
 |89 HammingIndep, L = 1200|0|1|0|
-|65 RandomWalk1 J (L = 90)|0|0|1|
-|54 WeightDistrib, r = 24|0|1|0|
 |51 WeightDistrib, r = 0|1|0|0|
 |72 LinearComp, r = 29|1|0|0|
 |31 Gap, r = 0|0|0|1|
-|9 CollisionOver, t = 20|0|0|1|
-|37 Permutation, r = 0|0|1|0|
-|9 CollisionOver, t = 20|0|1|0|
-|9 CollisionOver, t = 20|0|1|0|
-|85 HammingIndep, L = 30|0|1|0|
-|85 HammingIndep, L = 30|0|0|1|
 |92 Run of bits, r = 20|0|1|0|
-|10 CollisionOver, t = 20|1|0|0|
 |48 SampleCorr|0|1|0|
-|19 ClosePairs mNP, t = 3|0|0|1|
 |63 GCD, r = 0|0|0|1|
 |90 HammingIndep, L = 1200|0|1|0|
-|9 CollisionOver, t = 20|1|0|0|
-|68 RandomWalk1 M (L = 1000)|1|0|0|
 |36 Run of U01, r = 15|1|0|0|
 |77 LongestHeadRun, r = 20|1|0|0|
-|54 WeightDistrib, r = 24|0|0|1|
-|69 RandomWalk1 R (L = 10000)|0|0|1|
-|54 WeightDistrib, r = 24|0|0|1|
-|10 CollisionOver, t = 20|1|0|0|
-|9 CollisionOver, t = 20|0|0|1|
 |80 HammingWeight2, r = 0|0|0|1|
 |23 SimpPoker, d = 16|0|0|1|
-|70 RandomWalk1 H (L = 10000)|1|0|0|
-|61 MatrixRank, 1200 x 1200|1|0|0|
 |62 Savir2|0|0|1|
-|66 RandomWalk1 R (L = 90)|1|0|0|
-|18 ClosePairs mNP2, t = 2|1|0|0|
 |60 MatrixRank, 1200 x 1200|0|1|0|
-|13 BirthdaySpacings, t = 4|0|1|0|
-|69 RandomWalk1 J (L = 10000)|0|0|1|
-|2 SerialOver, t = 4|1|0|0|
-|52 WeightDistrib, r = 8|1|0|0|
-|1 SerialOver, t = 2|0|1|0|
-|9 CollisionOver, t = 20|1|0|0|
 |6 CollisionOver, t = 4|0|1|0|
-|69 RandomWalk1 C (L = 10000)|0|0|1|
 |4 CollisionOver, t = 2|0|0|1|
-|65 RandomWalk1 R (L = 90)|1|0|0|
-|47 SampleMean|0|1|0|
 |45 SampleProd, t = 10|1|0|0|
-|91 Run of bits, r = 0|1|0|0|
-|25 SimpPoker, d = 64|1|0|0|
 |83 HammingCorr, L = 300|1|0|0|
-|33 Gap, r = 0|1|0|0|
-|7 CollisionOver, t = 8|0|1|0|
-|28 CouponCollector, d = 4|0|1|0|
-|67 RandomWalk1 M (L = 1000)|0|0|1|
-|41 MaxOft, t = 5|0|0|1|
-|66 RandomWalk1 R (L = 90)|0|0|1|
-|66 RandomWalk1 M (L = 90)|0|1|0|
-|61 MatrixRank, 1200 x 1200|0|0|1|
-|91 Run of bits, r = 0|1|0|0|
 |86 HammingIndep, L = 30|1|0|0|
 |29 CouponCollector, d = 16|1|0|0|
 |56 MatrixRank, 60 x 60|0|0|1|
 |43 MaxOft, t = 20|0|1|0|
 |79 PeriodsInStrings, r = 15|0|0|1|
-|20 ClosePairs NP, t = 7|0|0|1|
 |5 CollisionOver, t = 4|0|0|1|
 |76 LongestHeadRun, r = 0|1|0|0|
 |93 AutoCor, d = 1|0|1|0|
+|**Total**|**41**|**28**|**34**|
+|**Expected**|**28.8**|**28.8**|**28.8**|
 
-### p-value distribuition
-
-|Side|high32 | mid32 | low32 |
+### P-value distribuition
+This table displays the breakdown of p-values ​​close to 1 (top) and close to 0 (bottom); in an ideal uniform distribution the values ​​should be equal.  
+| |high32 | mid32 | low32 |
 |----|-------|-------|-------|
 |Top|13|9|19|
 |Bottom|28|19|15|
 
-|Side|high32 | mid32 | low32 |
+This table displays the highest, lowest, mean, and standard deviation of the p-values.
+| |high32 | mid32 | low32 |
 |----|-------|-------|-------|
 |Top average|0.9996|0.9996|0.9995|
 |Bottom average|5.17e-4|4.09e-4|7.0e-4|
+|Top max value|1 - 3.1e-5|0.9999|1 - 4.3e-5|
+|Top min value|0.9990|0.9991|0.9991|
+|Top Standard deviation|0.001177|0.000693|0.001185|
+|Bottom max value|9.0e-4|8.0e-4|1.0e-3|
+|Bottom min value|3.7e-6|3.8e-5|1.0e-5|
+|Bottom Standard deviation|0.001613|0.001098|0.001260|

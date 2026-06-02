@@ -4,17 +4,17 @@ Comprehensive benchmark of xoshiro256**
 # TestU01
 
 # TestU01 crush
-Number of tests: 100
-Number of crush runs: 300
-Nomber of TestU01 statistics: 43200
-Total number of expected anomalies: 86.4 (3 x 28.8)
+Number of tests: 100  
+Number of crush runs: 300  
+Nomber of TestU01 statistics: 43200  
+Total number of expected anomalies: 86.4 (3 x 28.8)  
 
-Runs Low32 with anomalies: 30
-Runs Low32 without anomalies: 70
-Runs Mid32 with anomalies: 26
-Runs Mid32 without anomalies: 74
-Runs High32 with anomalies: 35
-Runs High32 without anomalies: 65
+Runs Low32 with anomalies: 30  
+Runs Low32 without anomalies: 70  
+Runs Mid32 with anomalies: 26  
+Runs Mid32 without anomalies: 74  
+Runs High32 with anomalies: 35  
+Runs High32 without anomalies: 65  
 
 ### Details of anomalies for each test performed
 | Test | high32 | mid32 | low32 |

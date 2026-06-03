@@ -1,7 +1,7 @@
 /*
  * testu01_xoshiro256ss_high32.c
  *
- * Execute TestU01 SmallCrush, Crush and BigCrush on xoshiro256ss (higher 32 bits)
+ * Execute TestU01 SmallCrush, Crush and BigCrush on xoshiro256ss (high 32 bits)
  *
  * xoshiro256** pseudorandom number generator - Copyright(C) D.Blackman & S.Vigna (vigna@acm.org)
  *
@@ -85,7 +85,7 @@ int isnt_valid_uint64(const char *str, uint64_t *out_value)
 
 void usage(void)
 {
-	printf("testu01_xoshiro256ss_high32 - Run TestU01 SmallCrush, Crush and BigCrush on xoshiro256** (higher 32 bits)\n\n");
+	printf("testu01_xoshiro256ss_high32 - Run TestU01 SmallCrush, Crush and BigCrush on xoshiro256** (high 32 bits)\n\n");
 	printf("Usage: testu01_xoshiro256ss_high32 [(small | crush | big) <seed> <seed> <seed> <seed>]\n\n");
 	printf("The seeds must be non-zero\n");
 }

@@ -12,7 +12,7 @@ Number of big_crush runs: **300**
 Nomber of TestU01 statistics: **48000**  
 Number of failures: **0**  
 Number of anomalies: **118**  
-Number of anomalies expected: **96.0**
+Number of anomalies expected: **96.0**  
 Maximum p-value: **1 - 5.9e-6**  
 Minimum p-value: **1.9e-5** 
 

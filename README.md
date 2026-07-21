@@ -4,12 +4,17 @@ This repository hosts a high-volume collection of independent statistical tests 
 Featuring 300 TestU01 BigCrush suites and 10 multi-gigabyte PractRand deployments across randomized seeds, this dataset serves as a robust reference point for PRNG benchmarking and quality comparison.
 
 # TestU01
-Number of session tests: 100  
-Number of big_crush runs: 300  
-Nomber of TestU01 statistics: 48000  
-Number of failures: 0  
-Number of anomalies: 118  
-Number of anomalies expected: 96.0  
+100 test session were performed. Each session involved running TestU1 BigCrush on the low 32 bits, the middle 32 bits, and the high 32 bits.  
+Random seeds were used in each session. The execution script is [run_bigcrush_test.sh](https://github.com/matteo65/xoshiro256ss-statistical-tests/tree/main/testu01_bigcrush/run_bigcrush_test.sh), and the list of reports from each run is in the directory [testu01_bigcrush/](https://github.com/matteo65/xoshiro256ss-statistical-tests/tree/main/testu01_bigcrush).
+
+Number of session tests: **100**  
+Number of big_crush runs: **300**  
+Nomber of TestU01 statistics: **48000**  
+Number of failures: **0**  
+Number of anomalies: **118**  
+Number of anomalies expected: **96.0**
+Maximum p-value: **1 - 5.9e-6**  
+Minimum p-value: **1.9e-5** 
 
 |Runs|high32|mid32|low32|**Total**|
 |----|------|-----|-----|---------|

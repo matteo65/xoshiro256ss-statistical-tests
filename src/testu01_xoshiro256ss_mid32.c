@@ -20,6 +20,7 @@
  
 #include <stdio.h>
 #include <stdint.h> // uint64_t
+#include <inttypes.h> // PRIu64
 #include <stdlib.h> // strcmp()
 #include <string.h> // strtoull()
 #include <errno.h> // errno
@@ -131,7 +132,7 @@ int main(int argc, char *argv[])
 
 	printf("=== TestU01 - Generator: xoshiro256ssMid32 ===\n");
 	for(int i = 0; i < 4; i++) {
-		printf("Seed %d: %llu\n", i, (unsigned long long) state.s[i]);
+		printf("Seed %d: %" PRIu64 "\n", i, state.s[i]);
 	}
 
 	if (strcmp(test_type, "small") == 0) {

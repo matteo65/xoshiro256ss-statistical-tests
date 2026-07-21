@@ -12,13 +12,14 @@
  * Compile: gcc -O3 xoshiro256ssgen.c -o xoshiro256ssgen
  *
  * Sintax:
- *  xoshiro256ssgen [-r | (<seed> <seed> <seed> <seed>) [-low32 | -high32]]
+ *  xoshiro256ssgen [-r | (<seed> <seed> <seed> <seed>) [-low32 | -mid32 | -high32]]
  *
  * 	xoshiro256ssgen                               Print help
  * 	xoshiro256ssgen -r                            Seeds random (prints values on stderr)
  *  xoshiro256ssgen <seed> <seed> <seed> <seed>   Seeds must be non-zero
  *
  *  option -low32:  write on stdout the lowest 32 bit instead full 64 bit
+ *  option -mid32:  write on stdout the middle 32 bit instead full 64 bit
  *  option -high32: write on stdout the highest 32 bit instead full 64 bit
  * 
  */
@@ -26,6 +27,7 @@
 #include <stdio.h> // fwrite()
 #include <string.h> // strcmp()
 #include <stdint.h> // uint64_t
+#include <inttypes.h> // PRIu64
 #include <time.h> // clock_gettime()
 #include <stdlib.h> // strtoull()
 #include <errno.h> // errno
@@ -33,43 +35,43 @@
 
 #define BUF_SIZE 65536
 
+static inline uint64_t rotl64(uint64_t x, int r)
+{
+	return (x << r) | (x >> ((-r) & 63));
+}
+
 /*
  * xoshiro256** PRNG state.
  */
 typedef struct {
-    uint64_t s[4];
+	uint64_t s[4];
 } Xoshiro256ssState;
 
 uint64_t xoshiro256ss(Xoshiro256ssState *state) 
 {
-    uint64_t result = state->s[1] * 5;
-    result = (result << 7) | (result >> 57);
-    result *= 9;
-
-    uint64_t t = state->s[1] << 17;
-
-    state->s[2] ^= state->s[0];
-    state->s[3] ^= state->s[1];
-    state->s[1] ^= state->s[2];
-    state->s[0] ^= state->s[3];
-
-    state->s[2] ^= t;
-    state->s[3] = (state->s[3] << 45) | (state->s[3] >> 19);
-
-    return result;
+	const uint64_t result = rotl64(state->s[1] * 5, 7) * 9;
+	const uint64_t t = state->s[1] << 17;
+	state->s[2] ^= state->s[0];
+	state->s[3] ^= state->s[1];
+	state->s[1] ^= state->s[2];
+	state->s[0] ^= state->s[3];
+	state->s[2] ^= t;
+	state->s[3] = rotl64(state->s[3], 45);
+	return result;
 }
 
 void usage(void)
 {
 	printf("xoshiro256ssgen - Continous xoshiro256** stdout pseudo number 64bit generator in binary format\n");
 	printf("Usage:\n");
-	printf("      xoshiro256ssgen [-r | (<seed> <seed> <seed> <seed>) [-low32 | -high32]]\n");
+	printf("      xoshiro256ssgen [-r | (<seed> <seed> <seed> <seed>) [-low32 | -mid32 | -high32]]\n");
 	printf("\n");
 	printf("      xoshiro256ssgen                              Print help\n");
 	printf("      xoshiro256ssgen -r                           Seeds random (prints values on stderr)\n");
 	printf("      xoshiro256ssgen <seed> <seed> <seed> <seed>  Seeds must be non-zero\n");
 	printf("\n");
 	printf("option -low32: write on stdout the lowest 32 bit instead full 64 bit\n");
+	printf("option -mid32:  write on stdout the middle 32 bit instead full 64 bit\n");
 	printf("option -high32: write on stdout the highest 32 bit instead full 64 bit\n");
 }
 
@@ -123,14 +125,17 @@ uint64_t random_from_clock(void)
 	return x;
 }
 
-// Return -32 if option = "low32"
-//        +32 if option = "high32"
+// Return -32 if option = "-low32"
+//        +32 if option = "-high32"
+//          1 if option = "-mid32"
 //          0 else
 int check_low_high(char *option)
 {
 	if(strcmp(option, "-low32") == 0) return -32;
 	
 	if(strcmp(option, "-high32") == 0) return +32;
+	
+	if(strcmp(option, "-mid32") == 0) return 1;
 
 	return 0;
 }
@@ -161,11 +166,11 @@ int main(int argc, char *argv[])
 		for(int i = 0; i < 4; i++)
 			state.s[i] = random_from_clock();
 		
-		fprintf(stderr, "xoshiro256ssgen: seed0 = %llu, seed1 = %llu seed2 = %llu, seed3 = %llu\n", 
-		                (unsigned long long)state.s[0], 
-						(unsigned long long)state.s[1],
-						(unsigned long long)state.s[2],
-						(unsigned long long)state.s[3]);
+		fprintf(stderr, "xoshiro256ssgen: seed0 = %" PRIu64 ", seed1 = %" PRIu64 " seed2 = %" PRIu64 ", seed3 = %" PRIu64 "\n", 
+		                state.s[0], 
+						state.s[1],
+						state.s[2],
+						state.s[3]);
 	}
 	else if(is_valid_uint64(argv[1], &(state.s[0])) 
 	        && is_valid_uint64(argv[2], &(state.s[1]))
@@ -203,6 +208,15 @@ int main(int argc, char *argv[])
 		for(;;) {
 			for(int i = 0; i < BUF_SIZE; i++) {
 				buffer[i] = (uint32_t)(xoshiro256ss(&state) >> 32);
+			}
+			fwrite(buffer, sizeof(uint32_t), BUF_SIZE, stdout);
+		}
+	}
+	else if(low_high_option == 1) { // 4 byte centrali
+		uint32_t buffer[BUF_SIZE];
+		for(;;) {
+			for(int i = 0; i < BUF_SIZE; i++) {
+				buffer[i] = (uint32_t)(xoshiro256ss(&state) >> 16);
 			}
 			fwrite(buffer, sizeof(uint32_t), BUF_SIZE, stdout);
 		}

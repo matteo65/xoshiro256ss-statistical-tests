@@ -1,7 +1,7 @@
 /*
  * testu01_xoshiro256ss_low32.c
  *
- * Execute TestU01 SmallCrush, Crush and BigCrush on xoshiro256ss (low 32 bits)
+ * Execute TestU01 SmallCrush, Crush and BigCrush on xoshiro256ss (lower 32 bits)
  *
  * xoshiro256** pseudorandom number generator - Copyright(C) D.Blackman & S.Vigna (vigna@acm.org)
  *
@@ -20,6 +20,7 @@
  
 #include <stdio.h>
 #include <stdint.h> // uint64_t
+#include <inttypes.h> // PRIu64
 #include <stdlib.h> // strcmp()
 #include <string.h> // strtoull()
 #include <errno.h> // errno
@@ -85,7 +86,7 @@ int isnt_valid_uint64(const char *str, uint64_t *out_value)
 
 void usage(void)
 {
-	printf("testu01_xoshiro256ss_low32 - Run TestU01 SmallCrush, Crush and BigCrush on xoshiro256** (low 32 bits)\n\n");
+	printf("testu01_xoshiro256ss_low32 - Run TestU01 SmallCrush, Crush and BigCrush on xoshiro256** (higher 32 bits)\n\n");
 	printf("Usage: testu01_xoshiro256ss_low32 [(small | crush | big) <seed> <seed> <seed> <seed>]\n\n");
 	printf("The seeds must be non-zero\n");
 }
@@ -131,7 +132,7 @@ int main(int argc, char *argv[])
 
 	printf("=== TestU01 - Generator: xoshiro256ssLow32 ===\n");
 	for(int i = 0; i < 4; i++) {
-		printf("Seed %d: %llu\n", i, (unsigned long long) state.s[i]);
+		printf("Seed %d: %" PRIu64 "\n", i, state.s[i]);
 	}
 
 	if (strcmp(test_type, "small") == 0) {
